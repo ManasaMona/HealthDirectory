@@ -18,9 +18,8 @@ def validate(request):
     ser_location=request.GET.get('ser_location')
     ser_phNum=request.GET.get('ser_phNum')
     ser_psword=request.GET.get('ser_psword')
-   ser_addr=request.GET.get('ser_addr')
-   ser_email=request.GET.get('ser_email')
-    
+    ser_addr=request.GET.get('ser_addr')
+    ser_email=request.GET.get('ser_email')
     response = {}
     if not Service_provider.objects.filter(ser_name=ser_name):
         s = Service_provider(ser_name=ser_name,ser_phNum=ser_phNum,ser_spl=ser_spl,ser_psword=ser_psword,ser_location=ser_location,ser_addr=ser_addr,ser_email=ser_email)
