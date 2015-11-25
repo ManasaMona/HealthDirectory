@@ -2,7 +2,7 @@ from django.db import models
 
 
 # Create your models here.
-class Service_Provider(models.Model):
+class Service_provider(models.Model):
    ser_name = models.CharField(max_length=50)
    ser_spl = models.CharField(max_length=200)
    ser_email =models.EmailField(max_length=30)
