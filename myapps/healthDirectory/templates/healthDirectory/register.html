@@ -7,14 +7,47 @@ registration page
 <body>
 <p>Registration Form</p>
 <form method="" action="">
-Name:<input type="text" name="sername"><br>
-Specializations:<input type="text" name="serspl"><br>
-Email:<input type="email" name="seremail"><br>
-Password:<input type="password" name="serpswrd"><br>
-Contact Number:<input type="tel" name="phnum"><br>
-Location : <input type="text" name="serloc"><br>
-Address : <input type="text" name="seraddr"><br>
-<input type="submit" value="Submit">
+Name:<input type="text" name="sername" id="sername"><br>
+Specializations:<input type="text" name="serspl" id="serspl"><br>
+Email:<input type="email" name="seremail" id="seremail"><br>
+Password:<input type="password" name="serpswrd" id="serpswrd"><br>
+Contact Number:<input type="tel" name="phnum" id="phnum"><br>
+Location : <input type="text" name="serloc" id="serloc"><br>
+Address : <input type="text" name="seraddr" id="seraddr"><br>
+<input type="submit" value="Submit" onclick="senddata()">
 <form>
+  <script>
+  	function senddata(){
+  			$.ajax({
+            url : "/healthDirectory/validate/", // the endpoint
+            type : "GET", // http method
+            data : {ser_name:$("#sername").val(),
+                 ser_spl:$("#serspl").val(),
+                  ser_psword:$("#serpswrd").val(),
+                  ser_phNum:S("#phnum").val(),
+                  ser_location:S("#serloc").val(),
+                  ser_addr:S("#seraddr").val(),
+                  
+             }, // data sent with the post request
+            // handle a successful response
+            success : function(json) {
+                console.log(json); // log the console.log("success"); // another sanity check
+                $("#sername").val('');
+                $("#serspl").val('');
+                $("#seremail").val('');
+                $("#serpswrd").val('');
+                $("#phnum").val('');
+                $("#serloc").val('');
+                $("#seraddr").val('');
+            },
+            // handle a non-successful response
+            error : function(xhr,errmsg,err) {
+                $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            }
+        });
+  		};
+  </script>
 </body>
 </html>
