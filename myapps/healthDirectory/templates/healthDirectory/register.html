@@ -20,16 +20,16 @@ Address : <input type="text" name="seraddr" id="seraddr"><br>
 
   <script>
   	function senddata(){
-        alert(hi);
   			$.ajax({
             url : "/healthDirectory/validate/", // the endpoint
             type : "GET", // http method
             data : {ser_name:$("#sername").val(),
                  ser_spl:$("#serspl").val(),
                   ser_psword:$("#serpswrd").val(),
-                  ser_phNum:S("#phnum").val(),
-                  ser_location:S("#serloc").val(),
-                  ser_addr:S("#seraddr").val(),
+                  ser_phNum:$("#phnum").val(),
+                  ser_location:$("#serloc").val(),
+                  ser_addr:$("#seraddr").val(),
+                  ser_email:$("#seremail").val(),
                   
              }, // data sent with the post request
             // handle a successful response
