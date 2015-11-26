@@ -41,28 +41,29 @@
 		error=error+"Name is required<br>";
 	}
 	else if(spl==''){
-		error=error+"Name is required<br>";
-	}
-	else if(spl==''){
-		error=error+"Specialisations is required<br>";
+		error=error+"Specialisations is required ";
 	}
 	else if(psword==''){
-		error=error+"Password is required<br>";
+		error=error+"Password is required "; 
 	}
 	else if(psword!=cpword){
-		error=error+"Password and Confirmation password does not match<br>";
+		error=error+" Password does not match ";
 	}
 	else if(phNum==''){
-		error=error+"Phone Number is required<br>";
+		error=error+"Phone Number is required ";
 	}
 	else if(location==''){
-		error=error+"Location is required<br>";
+		error=error+"Location is required ";
 	}
 	else if(email==''){
-		error=error+"Email  is required<br>";
+		error=error+"Email  is required ";
 	}
 	
+	if(error==''){
+	senddata();
+	}else{
 	alert(error);
+	}
   }
   </script>
     <script>
