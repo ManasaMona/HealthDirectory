@@ -26,6 +26,45 @@
   </head>
   <body>
   <!--scripts-->
+  <script>
+  function checkRegistration(){
+	var error=""
+	var name=$("#sername").val();
+	var spl=$("#serspl").val();
+	var psword=$("#serpswrd").val();
+	var cpword=$("#confirmpwd").val();
+	var phNum=$("#phnum").val();
+	var location=$("#serloc").val();
+	var addr=$("#seraddr").val();
+	var email=$("#seremail").val();
+	if(name==''){
+		error=error+"Name is required<br>";
+	}
+	else if(spl==''){
+		error=error+"Name is required<br>";
+	}
+	else if(spl==''){
+		error=error+"Specialisations is required<br>";
+	}
+	else if(psword==''){
+		error=error+"Password is required<br>";
+	}
+	else if(psword!=cpword){
+		error=error+"Password and Confirmation password does not match<br>";
+	}
+	else if(phNum==''){
+		error=error+"Phone Number is required<br>";
+	}
+	else if(location==''){
+		error=error+"Location is required<br>";
+	}
+	else if(email==''){
+		error=error+"Email  is required<br>";
+	}
+	
+	alert(error);
+  }
+  </script>
     <script>
     //register
   	function senddata(){
@@ -135,12 +174,12 @@
                         <label for="password">Password</label>
                         <input type="password" class="form-control" id="serpswrd" placeholder="Enter Password">
                         <label for="confirm_password">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password">
+                        <input type="password" class="form-control" id="confirmpwd" placeholder="Confirm Password">
                         <label for="phone">Phone No</label>
                         <input class="form-control" type="tel"  id="phnum" placeholder="Enter Phone">
                         <label for="address">Address</label>
                         <input class="form-control" type="text" id="seraddr" placeholder="Enter Address">
-                    <button type="submit" class="btn btn-success " onclick="senddata()">Register</button>  
+                    <button type="submit" class="btn btn-success " onclick="checkRegistration()">Register</button>  
             </div>
             
           
