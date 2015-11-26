@@ -21,7 +21,7 @@ def validate(request):
     ser_addr=request.GET.get('ser_addr')
     ser_email=request.GET.get('ser_email')
     response = {}
-    if not Service_provider.objects.filter(ser_name=ser_name):
+    if not Service_provider.objects.filter(ser_email=ser_email):
         s = Service_provider(ser_name=ser_name,ser_phNum=ser_phNum,ser_spl=ser_spl,ser_psword=ser_psword,ser_location=ser_location,ser_addr=ser_addr,ser_email=ser_email)
         s.save()
         response['status'] = 'sucess'
@@ -29,3 +29,8 @@ def validate(request):
         response['status'] = 'failure'
     json_data = json.dumps(response)
     return HttpResponse(json_data, content_type = "application/json")
+
+def validatelogin(request):
+        ser_email=request.GET.get('ser1_email')
+        ser_psword=request.GET.get('ser11_psword')
+        return HttpResponse("Hello, world. You're at the polls index.")

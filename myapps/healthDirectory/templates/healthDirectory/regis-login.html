@@ -27,6 +27,7 @@
   <body>
   <!--scripts-->
     <script>
+    //register
   	function senddata(){
   			$.ajax({
             url : "/healthDirectory/validate/", // the endpoint
@@ -42,7 +43,6 @@
              }, // data sent with the post request
             // handle a successful response
             success : function(json) {
-               
                 console.log(json); // log the console.log("success"); // another sanity check
                 $("#sername").val('');
                 $("#serspl").val('');
@@ -59,8 +59,37 @@
                     " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
                 console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
             }
-        });
-  		};
+         });
+       };
+    
+ 
+  </script>
+  <script>
+  //login      
+ function logindata(){
+ 		$.ajax({
+            url : "/healthDirectory/validatelogin/", // the endpoint
+            type : "GET", // http method
+            data : {
+                  ser1_email:$("#email_2").val(),
+                  ser1_psword:$("#password_2").val(),    
+             }, // data sent with the post request
+            // handle a successful response
+            success : function(json) { alert("hiee");
+                console.log(json); // log the console.log("success"); // another sanity check
+                $("#email_2").val('');
+                $("#password_2").val('');
+            },
+            // handle a non-successful response
+            error : function(xhr,errmsg,err) {
+                $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            }
+         });
+        
+ };
+    
   </script>
   <!--navigation-->
    <nav class="navbar navbar-default">
@@ -94,7 +123,6 @@
     <div class="row">
         <div class="col-md-12">
             <div class="col-md-4">
-              
                     <legend>Register your Service </legend>
                         <label for="name">Name</label>
                         <input type="text"  class="form-control" id="sername" placeholder="Enter Name"><br>
@@ -103,18 +131,16 @@
                         <label for="location">Location</label>
                         <input type="text" class="form-control" id="serloc" placeholder="Enter Location"><br>
                         <label for="email">Email</label>
-                        <input type="text"  class="form-control" id="seremail" placeholder="Enter email">
+                        <input type="email"  class="form-control" id="seremail" placeholder="Enter email">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" id="serpswrd" placeholder="Enter Password">
                         <label for="confirm_password">Confirm Password</label>
                         <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password">
                         <label for="phone">Phone No</label>
-                        <input class="form-control" type="text"  id="phnum" placeholder="Enter Phone">
+                        <input class="form-control" type="tel"  id="phnum" placeholder="Enter Phone">
                         <label for="address">Address</label>
                         <input class="form-control" type="text" id="seraddr" placeholder="Enter Address">
-                    <button type="submit" class="btn btn-success " onclick="senddata()">Register</button>
-              
-                
+                    <button type="submit" class="btn btn-success " onclick="senddata()">Register</button>  
             </div>
             
           
@@ -126,7 +152,7 @@
                         <input type="text" class="form-control" id="email_2" placeholder="Enter Email">                    
                         <label for="password_2">Password</label>
                         <input type="password" class="form-control" id="password_2" placeholder="Enter Password">
-                    <button type="submit" class="btn btn-success">Login</button>
+                    <button type="submit" class="btn btn-success" onclick="logindata()">Login</button>
                
             </div>
         </div>
