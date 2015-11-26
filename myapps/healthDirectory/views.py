@@ -9,7 +9,7 @@ from django.template import RequestContext, loader
 
 
 def index(request):
-        return render(request, 'healthDirectory/register.html')
+        return render(request, 'healthDirectory/regis-login.html')
 
 def validate(request):
     """return HttpResponse("Hello, world. You're at the polls index.")"""
