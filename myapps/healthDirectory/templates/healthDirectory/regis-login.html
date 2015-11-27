@@ -27,8 +27,27 @@
   <body>
   <!--scripts-->
   <script>
+  function checkLogin(){
+  var error1="";
+  var email1=$("#email_2").val();
+  var pswrd1=$("#password_2").val();
+  
+        if(email1==""){
+                error1=error1+"Email is required";
+        }else if(pswrd1==""){
+                error1=error1+"Password is required";
+        }
+        
+   if(error1==""){
+       logindata()
+   }else{
+       alert(error1);
+   }
+  }
+  </script>
+  <script>
   function checkRegistration(){
-	var error=""
+	var error="";
 	var name=$("#sername").val();
 	var spl=$("#serspl").val();
 	var psword=$("#serpswrd").val();
