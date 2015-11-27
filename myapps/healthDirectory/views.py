@@ -11,6 +11,9 @@ from django.template import RequestContext, loader
 def index(request):
 	return render(request, 'healthDirectory/regis-login.html')
 
+def home(request):
+	return render(request, 'healthDirectory/homepage.html')
+
 def validate(request):
 	"""return HttpResponse("Hello, world. You're at the polls index.")"""
 	ser_name = request.GET.get('ser_name')
