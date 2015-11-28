@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+  <style type="text/css">
+    .bs-example{
+    	margin: 20px;
+    }
+</style>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <span class="glyphicon glyphicon-home"></span>
+            </a>
+        </div>
+
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Search Results <span class="sr-only">(current)</span></a></li>
+            </ul>
+
+            <!--<ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Register</a></li>
+            </ul>-->
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+
+<div class="container">
+    <!-- Example row of columns -->
+   <div class="bs-example">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Specilizations</th>
+                <th>Location</th>
+                <th>Contact Number</th>
+                 <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sers in ser %}
+            <tr>
+                <td> {{ sers.ser_name }}</td>
+                <td>{{ sers.ser_spl }}</td>
+                <td>{{ sers.ser_location }}</td>
+                <td>{{ sers.ser_phNum }}</td>
+                <td>{{ sers.ser_addr }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+    <hr>
+
+    <footer>
+        <p>&copy; Company 2015</p>
+    </footer>
+</div>
+<!-- /container -->
+
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

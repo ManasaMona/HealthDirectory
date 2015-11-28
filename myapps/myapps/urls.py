@@ -18,7 +18,6 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 
 urlpatterns = [
-        url(r'^home/', TemplateView.as_view(template_name="healthDirectory/homepage.html")),
         url(r'^healthDirectory/', include('healthDirectory.urls')),
         url(r'^admin/', include(admin.site.urls)),
 ]

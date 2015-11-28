@@ -9,10 +9,12 @@ from django.template import RequestContext, loader
 
 
 def index(request):
-	return render(request, 'healthDirectory/regis-login.html')
+        return render(request, 'healthDirectory/homepage.html')
+        #return render(request, 'healthDirectory/regis-login.html')
+	#return render(request, 'healthDirectory/regis-login.html')
 
-def home(request):
-	return render(request, 'healthDirectory/homepage.html')
+def regislogin(request):
+	return render(request, 'healthDirectory/regis-login.html')
 
 def validate(request):
 	"""return HttpResponse("Hello, world. You're at the polls index.")"""
@@ -46,11 +48,15 @@ def validatelogin(request):
 		return HttpResponse(template.render(context))
 	else:
 		return render_to_response('healthDirectory/regis-login.html')
-	
-	"""if Service_provider.objects.filter(ser_email=ser_email,ser_psword=ser_psword):
-		return render_to_response('healthDirectory/login.html')
-	else:
-		return render_to_response('healthDirectory/regis-login.html')"""
+def searchresults(request) :
+        ser_value=request.POST.get('searchvalue')
+        ser=Service_provider.objects.filter(ser_name=ser_value)
+        template = loader.get_template('healthDirectory/results.html')
+        context = RequestContext(request, {
+                'ser': ser,
+        })
+        return HttpResponse(template.render(context))
+        #return render(request, 'healthDirectory/results.html')
 		
 	
 	
