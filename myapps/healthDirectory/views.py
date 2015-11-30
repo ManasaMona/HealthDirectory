@@ -57,6 +57,38 @@ def searchresults(request) :
         })
         return HttpResponse(template.render(context))
         #return render(request, 'healthDirectory/results.html')
+        
+
+def editprofile(request):
+        ser_email=request.POST.get('seremail')
+        ser=Service_provider.objects.filter(ser_email=ser_email)
+        template = loader.get_template('healthDirectory/editpage.html')
+        context = RequestContext(request, {
+			'ser': ser,
+		})
+	return HttpResponse(template.render(context))
+
+def updateprofile(request):
+        ser_name = request.GET.get('ser_name')
+	ser_spl = request.GET.get('ser_spl')
+	ser_location=request.GET.get('ser_location')
+	ser_phNum=request.GET.get('ser_phNum')
+	ser_addr=request.GET.get('ser_addr')
+	ser_email=request.GET.get('ser_email')
+        response = {}
+        
+        Service_provider.objects.filter(ser_email=ser_email).update(ser_name=ser_name)
+                 
+        ser=Service_provider.objects.filter(ser_email=ser_email)
+        template = loader.get_template('healthDirectory/login.html')
+        context = RequestContext(request, {
+                'ser': ser,
+        })
+        return HttpResponse(template.render(context))
+	
+        
+        
+        
 		
 	
 	
