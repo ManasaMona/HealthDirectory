@@ -51,7 +51,9 @@ def validatelogin(request):
 def searchresults(request) :
 	ser_value=request.POST.get('searchvalue')
 	#ser=Service_provider.objects.filter(ser_name=ser_value)
-	ser = Service_provider.objects.filter(ser_name__contains=ser_value)
+	ser = Service_provider.objects.filter(Q(ser_name__icontains=ser_value) | Q(ser_spl__icontains=ser_value) | Q(ser_location__icontains=ser_value))
+	# ser = Service_provider.objects.filter(ser_spl__icontains=ser_value)
+	# ser = Service_provider.objects.filter(ser_location__icontains=ser_value)
 	# ser=Service_provider.objects.filter(Q(ser_name__startswith=ser_value))
 	template = loader.get_template('healthDirectory/results.html')
 	context = RequestContext(request, {
@@ -59,6 +61,4 @@ def searchresults(request) :
 	})
 	return HttpResponse(template.render(context))
 	#return render(request, 'healthDirectory/results.html')
-
-	
 	
