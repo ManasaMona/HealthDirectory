@@ -6,7 +6,7 @@ import os
 import json
 from django.conf import settings
 from django.template import RequestContext, loader
-
+from django.db.models import Q
 
 def index(request):
         return render(request, 'healthDirectory/homepage.html')
@@ -48,6 +48,7 @@ def validatelogin(request):
 		return HttpResponse(template.render(context))
 	else:
 		return render_to_response('healthDirectory/regis-login.html')
+
 def searchresults(request) :
         ser_value=request.POST.get('searchvalue')
         ser=Service_provider.objects.filter(ser_name=ser_value)
@@ -88,7 +89,6 @@ def updateprofile(request):
 	
         
         
-        
-		
-	
+ 
+
 	
