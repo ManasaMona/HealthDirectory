@@ -8,7 +8,7 @@ urlpatterns = [
         url(r'regislogin/$', views.regislogin, name='regislogin'),
         url(r'searchresults/$', views.searchresults, name='searchresults'),
         url(r'editprofile/$', views.editprofile, name='editprofile'),
-         url(r'updateprofile/$', views.updateprofile, name='updateprofile'),
+        url(r'updateprofile/$', views.updateprofile, name='updateprofile'),
         
 
 ]
