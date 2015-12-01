@@ -1,151 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Doctor Profile</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>Registration-Login</title>
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+	{% load staticfiles %}
+		<link rel="stylesheet" type="text/css" href="{% static 'healthDirectory/css/bootstrap.min.css' %}" />
+<!--Online links for bootstrap-->  
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
 </head>
-
 <body>
+<!--scripts-->
+
 <script>
+//register
 function senddata(){
-  			$.ajax({
-            url : "/healthDirectory/updateprofile/", // the endpoint
-            type : "GET", // http method
-            data : {ser_name:$("#ser_name").val(),
-                 ser_spl:$("#ser_spl").val(),
-                  ser_phNum:$("#ser_phNum").val(),
-                  ser_location:$("#ser_location").val(),
-                  ser_addr:$("#ser_addr").val(),
-                  ser_email:$("#ser_email").val(),
-                  
-             }, // data sent with the post request
-            // handle a successful response
-            success : function(json) {
-                console.log(json); // log the console.log("success"); // another sanity check
-                $("#sername").val('');
-                $("#serspl").val('');
-                $("#seremail").val('');
-                $("#serpswrd").val('');
-                $("#phnum").val('');
-                $("#serloc").val('');
-                $("#seraddr").val('');
-            },
-            // handle a non-successful response
-            error : function(xhr,errmsg,err) {
-                $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
-                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-            }
-         });
-       };
+	alert("hiiiiiii");
+	$.ajax({
+	url : "/healthDirectory/updateprofile/", // the endpoint
+	type : "POST", // http method
+	data : {ser_name:$("#sername").val(),
+	ser_spl:$("#serspl").val(),
+	ser_phNum:$("#phnum").val(),
+	ser_location:$("#serloc").val(),
+	ser_addr:$("#seraddr").val(),
+	ser_email:$("#seremail").val(),
+
+	}, // data sent with the post request
+	// handle a successful response
+	success : function() {
+	 // log the console.log("success"); // another sanity check
+	<!--alert("Regristration is Sucessfull"); -->
+	},
+	// handle a non-successful response
+	error : function(xhr,errmsg,err) {
+		alert("falilure");
+	$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+	" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+	console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+	}
+	});
+};
+
+
 </script>
+
+<!--navigation-->
 <nav class="navbar navbar-default">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        
-
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active"> <span class="sr-only">(current)</span></li>
-            </ul>
-               
-            <!--<ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Register</a></li>
-            </ul>-->
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
+	<div class="container">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header">
+		<a class="navbar-brand" href="#">
+		<span class="glyphicon glyphicon-home"></span>
+		</a>
+	</div>
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav">
+		<li><a href="#">Home <span class="sr-only">(current)</span></a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+		<li class="active"><a href="#">Register</a></li>
+		</ul>
+	</div>
+	<!-- /.navbar-collapse -->
+	</div>
+<!-- /.container-fluid -->
 </nav>
 
 
 <div class="container">
-    <!-- Example row of columns -->
-    <div class="row">
-        <div class="col-md-12">
-
-            <div class="col-md-2">
-
-                <h4 class="media-heading">Profile</h4>
-
-                <div class="media">
-                    <div class="media-left">
-                        <!-- <a href="#">
-                            <img class="media-object" src="http://placehold.it/120x120">
-                        </a> -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-
-                <legend>Edit your profile</legend>
-
-               <!-- <div class="list-group">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-4">
+				<form action="updateprofile/" method="post">{% csrf_token %}
+					<legend>Edit your profile</legend>
 					{% for sers in ser %}
-                    <span class="list-group-item">Name           : {{ sers.ser_name }}</span>
-                    <span class="list-group-item">Specialisation : {{ sers.ser_spl }}</span>
-                    <span class="list-group-item">Location       : {{ sers.ser_location }}</span>
-                    <span class="list-group-item">Email          : {{ sers.ser_email }}</span>
-                    <span class="list-group-item">Contact No     : {{ sers.ser_phNum }}</span>
-                    <span class="list-group-item">Address        : {{ sers.ser_addr }}</span>
+					<label for="name">Name</label>
+					<input type="text"  class="form-control" name="ser_name" id="sername" placeholder="{{ sers.ser_name }}"><br>
+					<label for="specs">Specialisations</label>
+					<input type="text" class="form-control" id="serspl" name="ser_spl" placeholder="{{ sers.ser_spl }}"><br>
+					<label for="location">Location</label>
+					<input type="text" class="form-control" id="serloc" name="ser_loc"placeholder="{{ sers.ser_location }}"><br>
+					<label for="email">Email</label>
+					<input type="text"  class="form-control" name="ser_email" id="seremail" placeholder=" {{ sers.ser_email }}" >
+					<label for="password">Password</label>
+					<input type="password" class="form-control" name="ser_psword" id="serpswrd" placeholder="Enter Password">
+					<label for="confirm_password">Confirm Password</label>
+					<input type="password" class="form-control" name="ser_cpsword"id="confirmpwd" placeholder="Confirm Password">
+					<label for="phone">Phone No</label>
+					<input class="form-control" type="tel" name="ser_phNum" id="phnum" placeholder="{{ sers.ser_phNum }}">
+					<label for="address">Address</label>
+					<input class="form-control" type="text" name="ser_addr" id="seraddr" placeholder="{{ sers.ser_addr }}">
 					{% endfor %}
-                </div>-->
-                <!--<form class="form-horizontal" action="updateprofile/" method="POST">
-                <!--{%csrf_token%}-->
-                
-                        <div class="list-group">
-                                {% for sers in ser %}
+					<button type="submit" class="btn btn-success ">Update Profile</button> 
+				</form>
+			</div>   
+		</div>
+	</div>
+<hr>
 
-                                <span class="list-group-item">
-                                Name : <input type="text" name="ser_name"  id="ser_name"  class="form-control" placeholder="{{ sers.ser_name }}"></input>
-                                </span>
-                                <span class="list-group-item">
-                                Specialisation : <input type="text"  name="ser_spl"  id="ser_spl" class="form-control" placeholder="{{ sers.ser_spl }}"> </input>
-                                </span>
-                                <span class="list-group-item">
-                                Location:<input type="text" id="ser_location" id="ser_location" class="form-control" placeholder="{{ sers.ser_location }}" > </input>
-                                </span>
-
-                                <span class="list-group-item">
-                                <input type="hidden" name="ser_email" name="ser_email" class="form-control" value={{sers.ser_email}}/>
-                                </span>
-
-                                <span class="list-group-item">
-                                Contact No:<input type="text" name="ser_phNum" id="ser_phNum" class="form-control" placeholder="{{ sers.ser_phNum }}" > </input>
-                                </span>
-
-                                <span class="list-group-item">
-                                Address <input type="text"  name="ser_addr"   id="ser_addr" class="form-control" placeholder="{{ sers.ser_addr }}"></input>
-                                </span>
-                                {% endfor %}
-                        </div>
-				
-				<button type="submit" class="btn btn-success" onclick="senddata()">Update Profile</button>
-				<!--</form>-->
-            </div>
-        </div>
-    </div>
-
-    <hr>
-
-    <footer>
-        <p>&copy; Company 2015</p>
-    </footer>
+<footer>
+<p>&copy; 100years 2015</p>
+</footer>
 </div>
 <!-- /container -->
 
 
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-
+<!--bootstrap part-->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

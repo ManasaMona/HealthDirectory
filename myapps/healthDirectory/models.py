@@ -12,6 +12,6 @@ class Service_provider(models.Model):
    ser_location=models.CharField(max_length=50)
    
    def __unicode__(self):
-        return self.ser_email
+        return self.ser_name
    
 
