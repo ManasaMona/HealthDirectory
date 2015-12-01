@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+
+<body>
+<script>
+function senddata(){
+  			$.ajax({
+            url : "/healthDirectory/updateprofile/", // the endpoint
+            type : "GET", // http method
+            data : {ser_name:$("#ser_name").val(),
+                 ser_spl:$("#ser_spl").val(),
+                  ser_phNum:$("#ser_phNum").val(),
+                  ser_location:$("#ser_location").val(),
+                  ser_addr:$("#ser_addr").val(),
+                  ser_email:$("#ser_email").val(),
+                  
+             }, // data sent with the post request
+            // handle a successful response
+            success : function(json) {
+                console.log(json); // log the console.log("success"); // another sanity check
+                $("#sername").val('');
+                $("#serspl").val('');
+                $("#seremail").val('');
+                $("#serpswrd").val('');
+                $("#phnum").val('');
+                $("#serloc").val('');
+                $("#seraddr").val('');
+            },
+            // handle a non-successful response
+            error : function(xhr,errmsg,err) {
+                $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            }
+         });
+       };
+</script>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        
+
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"> <span class="sr-only">(current)</span></li>
+            </ul>
+               
+            <!--<ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Register</a></li>
+            </ul>-->
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="col-md-2">
+
+                <h4 class="media-heading">Profile</h4>
+
+                <div class="media">
+                    <div class="media-left">
+                        <!-- <a href="#">
+                            <img class="media-object" src="http://placehold.it/120x120">
+                        </a> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+
+                <legend>Edit your profile</legend>
+
+               <!-- <div class="list-group">
+					{% for sers in ser %}
+                    <span class="list-group-item">Name           : {{ sers.ser_name }}</span>
+                    <span class="list-group-item">Specialisation : {{ sers.ser_spl }}</span>
+                    <span class="list-group-item">Location       : {{ sers.ser_location }}</span>
+                    <span class="list-group-item">Email          : {{ sers.ser_email }}</span>
+                    <span class="list-group-item">Contact No     : {{ sers.ser_phNum }}</span>
+                    <span class="list-group-item">Address        : {{ sers.ser_addr }}</span>
+					{% endfor %}
+                </div>-->
+                <!--<form class="form-horizontal" action="updateprofile/" method="POST">
+                <!--{%csrf_token%}-->
+                
+                        <div class="list-group">
+                                {% for sers in ser %}
+
+                                <span class="list-group-item">
+                                Name : <input type="text" name="ser_name"  id="ser_name"  class="form-control" placeholder="{{ sers.ser_name }}"></input>
+                                </span>
+                                <span class="list-group-item">
+                                Specialisation : <input type="text"  name="ser_spl"  id="ser_spl" class="form-control" placeholder="{{ sers.ser_spl }}"> </input>
+                                </span>
+                                <span class="list-group-item">
+                                Location:<input type="text" id="ser_location" id="ser_location" class="form-control" placeholder="{{ sers.ser_location }}" > </input>
+                                </span>
+
+                                <span class="list-group-item">
+                                <input type="hidden" name="ser_email" name="ser_email" class="form-control" value={{sers.ser_email}}/>
+                                </span>
+
+                                <span class="list-group-item">
+                                Contact No:<input type="text" name="ser_phNum" id="ser_phNum" class="form-control" placeholder="{{ sers.ser_phNum }}" > </input>
+                                </span>
+
+                                <span class="list-group-item">
+                                Address <input type="text"  name="ser_addr"   id="ser_addr" class="form-control" placeholder="{{ sers.ser_addr }}"></input>
+                                </span>
+                                {% endfor %}
+                        </div>
+				
+				<button type="submit" class="btn btn-success" onclick="senddata()">Update Profile</button>
+				<!--</form>-->
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>&copy; Company 2015</p>
+    </footer>
+</div>
+<!-- /container -->
+
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

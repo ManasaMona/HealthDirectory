@@ -48,17 +48,47 @@ def validatelogin(request):
 		return HttpResponse(template.render(context))
 	else:
 		return render_to_response('healthDirectory/regis-login.html')
+
 def searchresults(request) :
-	ser_value=request.POST.get('searchvalue')
-	#ser=Service_provider.objects.filter(ser_name=ser_value)
-	ser = Service_provider.objects.filter(Q(ser_name__icontains=ser_value) | Q(ser_spl__icontains=ser_value) | Q(ser_location__icontains=ser_value))
-	# ser = Service_provider.objects.filter(ser_spl__icontains=ser_value)
-	# ser = Service_provider.objects.filter(ser_location__icontains=ser_value)
-	# ser=Service_provider.objects.filter(Q(ser_name__startswith=ser_value))
-	template = loader.get_template('healthDirectory/results.html')
-	context = RequestContext(request, {
-	        'ser': ser,
-	})
+        ser_value=request.POST.get('searchvalue')
+        ser=Service_provider.objects.filter(ser_name=ser_value)
+        template = loader.get_template('healthDirectory/results.html')
+        context = RequestContext(request, {
+                'ser': ser,
+        })
+        return HttpResponse(template.render(context))
+        #return render(request, 'healthDirectory/results.html')
+        
+
+def editprofile(request):
+        ser_email=request.POST.get('seremail')
+        ser=Service_provider.objects.filter(ser_email=ser_email)
+        template = loader.get_template('healthDirectory/editpage.html')
+        context = RequestContext(request, {
+			'ser': ser,
+		})
 	return HttpResponse(template.render(context))
-	#return render(request, 'healthDirectory/results.html')
+
+def updateprofile(request):
+        ser_name = request.GET.get('ser_name')
+	ser_spl = request.GET.get('ser_spl')
+	ser_location=request.GET.get('ser_location')
+	ser_phNum=request.GET.get('ser_phNum')
+	ser_addr=request.GET.get('ser_addr')
+	ser_email=request.GET.get('ser_email')
+        response = {}
+        
+        Service_provider.objects.filter(ser_email=ser_email).update(ser_name=ser_name)
+                 
+        ser=Service_provider.objects.filter(ser_email=ser_email)
+        template = loader.get_template('healthDirectory/login.html')
+        context = RequestContext(request, {
+                'ser': ser,
+        })
+        return HttpResponse(template.render(context))
+	
+        
+        
+ 
+
 	
