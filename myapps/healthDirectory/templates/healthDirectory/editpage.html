@@ -26,7 +26,7 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body onload="EmailValue()">
 <!--scripts-->
 
 <script>
@@ -61,6 +61,17 @@ function senddata(){
 
 
 </script>
+<script>
+function EmailValue() {
+alert("hiii");
+{% for sers in ser %}
+ var a = "{{sers.ser_email}}"
+ {% endfor %}
+ 
+alert(typeof a);
+   
+}
+</script>
 
 <!--navigation-->
 <nav class="navbar navbar-default">
@@ -89,7 +100,8 @@ function senddata(){
 	<div class="row">
 		<div class="col-md-12">
 			<div class="col-md-4">
-				<form action="updateprofile/" method="post">{% csrf_token %}
+				<form action="updateprofile/" method="post">
+				{% csrf_token %}
 					<legend>Edit your profile</legend>
 					{% for sers in ser %}
 					<label for="name">Name</label>
@@ -99,7 +111,7 @@ function senddata(){
 					<label for="location">Location</label>
 					<input type="text" class="form-control" id="serloc" name="ser_loc"placeholder="{{ sers.ser_location }}"><br>
 					<label for="email">Email</label>
-					<input type="text"  class="form-control" name="ser_email" id="seremail" placeholder=" {{ sers.ser_email }}" >
+					<input type="hidden"  class="form-control" name="ser_email" id="seremail" value=" {{ sers.ser_email }}" >
 					<label for="password">Password</label>
 					<input type="password" class="form-control" name="ser_psword" id="serpswrd" placeholder="Enter Password">
 					<label for="confirm_password">Confirm Password</label>
