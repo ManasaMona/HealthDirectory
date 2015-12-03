@@ -78,20 +78,18 @@ def updateprofile(request):
 		ser_spl = request.POST.get('ser_spl')
 		ser_location=request.POST.get('ser_location')
 		ser_phNum=request.POST.get('ser_phNum')
-		ser_psword=request.GET.get('ser_psword')
-		ser_cpsword=request.GET.get('ser_cpsword')
+		ser_psword=request.POST.get('ser_psword')
+		ser_cpsword=request.POST.get('ser_cpsword')
 		ser_addr=request.POST.get('ser_addr')
-<<<<<<< HEAD
-		ser_email=str(request.POST.get('ser_email'))
-=======
 		ser_email=request.POST.get('ser_email','')
->>>>>>> 25b5e4f430ea3a2d9aaeefd848c05359f34f08cb
 		response = {}
-	
-		if not ser_cpsword==ser_psword:
-			response = 'Enter the password again'
-			return HttpResponse(response)
-		if ser_email:
+                
+                if ser_psword:
+                        if not ser_cpsword==ser_psword:
+                                response = 'Enter the password again'
+                                return HttpResponse(response)
+		
+                if ser_email:
 			if ser_name:
 				Service_provider.objects.filter(ser_email=ser_email).update(ser_name=ser_name) 
 			if ser_spl:
