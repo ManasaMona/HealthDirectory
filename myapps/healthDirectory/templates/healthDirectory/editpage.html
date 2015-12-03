@@ -32,38 +32,6 @@
 <!--scripts-->
 
 <script>
-//register
-function senddata(){
-	$.ajax({
-	url : "/healthDirectory/updateprofile/", // the endpoint
-	type : "POST", // http method
-	data : {ser_name:$("#sername").val(),
-	ser_spl:$("#serspl").val(),
-	ser_phNum:$("#phnum").val(),
-	ser_location:$("#serloc").val(),
-	ser_addr:$("#seraddr").val(),
-	ser_email:$("#seremail").val(),
-
-	}, // data sent with the post request
-	// handle a successful response
-	success : function() {
-	 // log the console.log("success"); // another sanity check
-	<!--alert("Regristration is Sucessfull"); -->
-	},
-	// handle a non-successful response
-	error : function(xhr,errmsg,err) {
-		alert("falilure");
-	$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-	" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
-	console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-	}
-	});
-};
-
-
-</script>
-
-<script>
 function EmailValue() {
 //alert("hiii");
 {% for sers in ser %}

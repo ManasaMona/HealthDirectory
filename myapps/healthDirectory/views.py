@@ -10,7 +10,7 @@ from django.template import RequestContext, loader
 from django.db.models import Q
 
 def index(request):
-		ser = Service_provider.objects.all().order_by('-id')[:5]
+		ser = Service_provider.objects.all().order_by('-id')[:7]
 		template = loader.get_template('healthDirectory/homepage.html')
 		context = RequestContext(request, {
 		        'ser': ser,
