@@ -78,7 +78,7 @@
 	var addr=$("#seraddr").val();
 	var email=$("#seremail").val();
 	if(name==''){
-		error=error+"Name is required<br>";
+		error=error+"Name is required";
 	}
 	else if(spl==''){
 		error=error+"Specialisations is required ";
@@ -123,7 +123,8 @@
              }, // data sent with the post request
             // handle a successful response
             success : function(json) {
-                console.log(json); // log the console.log("success"); // another sanity check
+                //console.log(json); // log the console.log("success"); // another sanity check
+				alert(json.status);
                 $("#sername").val('');
                 $("#serspl").val('');
                 $("#seremail").val('');
@@ -131,10 +132,11 @@
                 $("#phnum").val('');
                 $("#serloc").val('');
                 $("#seraddr").val('');
-                 alert("Regristration is Sucessfull");
+                 //alert("Regristration is Sucessfull");
             },
             // handle a non-successful response
             error : function(xhr,errmsg,err) {
+			alert("Email already exists");
                 $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
                     " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
                 console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
@@ -175,21 +177,24 @@
    <nav class="navbar navbar-default">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
+      <!--   <div class="navbar-header">
             <a class="navbar-brand" href="#">
                 <span class="glyphicon glyphicon-home"></span>
             </a>
-        </div>
+        </div> -->
 
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="#">Home <span class="sr-only">(current)</span></a></li>
+           <!--  <ul class="nav navbar-nav">
+                <li><a href="#"> Registration and Login <span class="sr-only">(current)</span></a></li>
+            </ul> -->
+			<ul class="nav navbar-nav navbar-left">
+                <li class="active"><a href="#">Register</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">Register</a></li>
+                <li class="active"><a href="#">Login</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -234,6 +239,7 @@
                         <input type="password" class="form-control" id="password_2" placeholder="Enter Password">
                     <button type="submit" class="btn btn-success" onclick="checkLogin()">Login</button>-->
 				<legend>Login</legend>
+				<kbd>{% block title %}{{ title }}{% endblock title %}</kbd>
 				<form method="POST" action="validatelogin/">
 					{%csrf_token%}
 					<label for="email_2">Email</label>
