@@ -26,7 +26,11 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
+<<<<<<< HEAD
 <body>
+=======
+<body onload="EmailValue()">
+>>>>>>> 25b5e4f430ea3a2d9aaeefd848c05359f34f08cb
 <!--scripts-->
 
 <script>
@@ -61,6 +65,20 @@ function senddata(){
 
 
 </script>
+<<<<<<< HEAD
+=======
+<script>
+function EmailValue() {
+alert("hiii");
+{% for sers in ser %}
+ var a = "{{sers.ser_email}}"
+ {% endfor %}
+ 
+alert(typeof a);
+   
+}
+</script>
+>>>>>>> 25b5e4f430ea3a2d9aaeefd848c05359f34f08cb
 
 <!--navigation-->
 <nav class="navbar navbar-default">
@@ -89,7 +107,12 @@ function senddata(){
 	<div class="row">
 		<div class="col-md-12">
 			<div class="col-md-4">
+<<<<<<< HEAD
 				<form action="updateprofile/" method="post">{% csrf_token %}
+=======
+				<form action="updateprofile/" method="post">
+				{% csrf_token %}
+>>>>>>> 25b5e4f430ea3a2d9aaeefd848c05359f34f08cb
 					<legend>Edit your profile</legend>
 					{% for sers in ser %}
 					<label for="name">Name</label>
@@ -99,7 +122,11 @@ function senddata(){
 					<label for="location">Location</label>
 					<input type="text" class="form-control" id="serloc" name="ser_loc"placeholder="{{ sers.ser_location }}"><br>
 					<label for="email">Email</label>
+<<<<<<< HEAD
 					<input type="text"  class="form-control" name="ser_email" id="seremail" placeholder=" {{ sers.ser_email }}" >
+=======
+					<input type="hidden"  class="form-control" name="ser_email" id="seremail" value=" {{ sers.ser_email }}" >
+>>>>>>> 25b5e4f430ea3a2d9aaeefd848c05359f34f08cb
 					<label for="password">Password</label>
 					<input type="password" class="form-control" name="ser_psword" id="serpswrd" placeholder="Enter Password">
 					<label for="confirm_password">Confirm Password</label>

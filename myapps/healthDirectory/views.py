@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.core.context_processors import csrf
 from django.shortcuts import render,render_to_response
 from .models import Service_provider
 import cgi
@@ -80,7 +81,11 @@ def updateprofile(request):
 		ser_psword=request.GET.get('ser_psword')
 		ser_cpsword=request.GET.get('ser_cpsword')
 		ser_addr=request.POST.get('ser_addr')
+<<<<<<< HEAD
 		ser_email=str(request.POST.get('ser_email'))
+=======
+		ser_email=request.POST.get('ser_email','')
+>>>>>>> 25b5e4f430ea3a2d9aaeefd848c05359f34f08cb
 		response = {}
 	
 		if not ser_cpsword==ser_psword:
