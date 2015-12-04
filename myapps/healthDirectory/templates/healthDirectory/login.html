@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Doctor Profile</title>
+    {% load staticfiles %}
+      <link rel="stylesheet" type="text/css" href="{% static 'healthDirectory/css/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -13,7 +15,7 @@
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/healthDirectory/">
                 <span class="glyphicon glyphicon-home"></span>
             </a>
         </div>
@@ -65,12 +67,12 @@
 
                 <div class="list-group">
 					{% for sers in ser %}
-                    <span class="list-group-item">Name           : {{ sers.ser_name }}</span>
-                    <span class="list-group-item">Specialisation : {{ sers.ser_spl }}</span>
-                    <span class="list-group-item">Location       : {{ sers.ser_location }}</span>
-                    <span class="list-group-item">Email          : {{ sers.ser_email }}</span>
-                    <span class="list-group-item">Contact No     : {{ sers.ser_phNum }}</span>
-                    <span class="list-group-item">Address        : {{ sers.ser_addr }}</span>
+                    <span class="list-group-item"><b>NAME           </b>: {{ sers.ser_name }}</span>
+                    <span class="list-group-item"><b>SPECALIZATION  </b>: {{ sers.ser_spl }}</span>
+                    <span class="list-group-item"><b>LOCATION       </b>: {{ sers.ser_location }}</span>
+                    <span class="list-group-item"><b>EMAIL-ID       </b>: {{ sers.ser_email }}</span>
+                    <span class="list-group-item"><b>CONTACT NUMBER </b>: {{ sers.ser_phNum }}</span>
+                    <span class="list-group-item"><b>ADDRESS        </b>: {{ sers.ser_addr }}</span>
 					{% endfor %}
                 </div>
                     <form action="editprofile/" method="POST">

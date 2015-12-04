@@ -49,13 +49,13 @@ document.getElementById("seremail").value=a+"";
 	<div class="container">
 	<!-- Brand and toggle get grouped for better mobile display -->
 	<div class="navbar-header">
-		<a class="navbar-brand" href="#">
+		<a class="navbar-brand" href="/healthDirectory/">
 		<span class="glyphicon glyphicon-home"></span>
 		</a>
 	</div>
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav">
-		<li><a href="#">Home <span class="sr-only">(current)</span></a></li>
+		<li><a href="/healthDirectory/">Home <span class="sr-only">(current)</span></a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 		<li class="active"><a href="#">Register</a></li>
@@ -77,7 +77,7 @@ document.getElementById("seremail").value=a+"";
 					<label for="specs">Specialisations</label>
 					<input type="text" class="form-control" id="serspl" name="ser_spl" placeholder="{{ sers.ser_spl }}"><br>
 					<label for="location">Location</label>
-					<input type="text" class="form-control" id="serloc" name="ser_loc"placeholder="{{ sers.ser_location }}"><br>
+					<input type="text" class="form-control" id="serloc" name="ser_loc" placeholder="{{ sers.ser_location }}"><br>
 					<label for="email"><!-- Email --></label>
 					<input type="hidden"  class="form-control" name="ser_email" id="seremail" placeholder=" {{ sers.ser_email }}" >
 					<label for="password">Password</label>
