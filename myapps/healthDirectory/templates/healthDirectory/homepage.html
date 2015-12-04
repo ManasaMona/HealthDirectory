@@ -1,29 +1,20 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    
-       
-
-</head>
-<body>
-
-<style>
-.bannerarea{
-    height: 100%;
-    background-color: blue; 
-}
-</style>
-
-    
-
-<nav class="navbar navbar-default">
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+  <nav class="navbar navbar-default">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -40,8 +31,8 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/healthDirectory/regislogin"><button class="btn btn-info btn-sm"> <span class="glyphicon glyphicon-apple"></span>Register</button></a></li>
-                 <li><a href="/healthDirectory/regislogin"> <button class="btn btn-info btn-sm"><span class="glyphicon glyphicon-apple"></span>Login</button></a></li>
+                <li><a href="/healthDirectory/regislogin"><button class="btn btn-info btn-sm"> <span class="glyphicon glyphicon-edit"></span>Register</button></a></li>
+                 <li><a href="/healthDirectory/regislogin"> <button class="btn btn-info btn-sm"><span class="glyphicon glyphicon-user"></span>Login</button></a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -50,9 +41,11 @@
 </nav>
 
 
-<!-- <section class="bannerarea"> -->
-<div class="row">
-<div class="col-md-6 col-md-offset-3">
+
+
+    <!-- Carousel
+    ================================================== -->
+  <div class="col-md-6 col-md-offset-3">
             <div class="well-lg" <span="" style="font-size:40px;color:black;text-align: center">100Years
         </div>
             <div class="well-lg">
@@ -78,24 +71,73 @@
             
         </div>
     </div>
-    </div>
-    
-    
-   
-  
 
-    <!--<footer>
-        <p>&copy; Company 2015</p>
-    </footer>-->
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
 
-<!-- /container -->
+    <div class="container marketing">
+      <!-- START THE FEATURETTES -->
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Healthcare information just one click away!<span class="text-muted"></span></h2>
+          <p class="lead">100years is a directory providing data related to healthcare services.It’s a platform that’ll bring doctors and hospitals together to exchange information with users. </p>
+        </div>
+        <div class="col-md-5">
+		<b><span class="text-muted">Recent Registrations</span><b/>
+		<div class="container">
+		<marquee bgcolor="#81BEF7" onMouseOver="this.scrollAmount=0" onMouseOut="this.scrollAmount=2" scrollamount="2" direction="up" loop="true" width="30%">
+		<center>{% for sers in ser %} 
+		<font color="#ffffff" size="+1">{{ sers.ser_name }}</font><p>
+			{% endfor %}
+		</center>
+		</marquee>
+		</div>
+         <!--  <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image"> -->
+        </div>
+      </div>
+
+     <!--  <hr class="featurette-divider"> -->
 
 
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+      <!-- /END THE FEATURETTES -->
+	  <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-md-6">
+         {% load staticfiles %}
+          <img class="img-circle" src="{% static 'healthDirectory/images/doctor.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+          <h2>Doctors</h2>
+          <p>Life is a gift of God and doctors are the angels who save our lives. The medical science is advancing rapidly, and now we have healthcare specialists who have an expertise in particular field of health treatment.</p>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        </div>
+        <div class="col-md-6">
+          <img class="img-circle" src="{% static 'healthDirectory/images/hospital.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+          <h2>Hospitals</h2>
+          <p>Hospitals, healthcare facilities and clinics all play an important role in maintaining good health and treating different diseases. From simple cough and cold to major operations and treatments, these healthcare units offer all types of services that are pivotal to make us enjoy the charm of life</p>
+         
+        </div>
+      </div> 
 
- 
-</body>
+
+      <!-- FOOTER -->
+	   <hr class="featurette-divider"> 
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 100 years 2015 &middot; </p>
+      </footer>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
 </html>

@@ -32,46 +32,14 @@
 <!--scripts-->
 
 <script>
-//register
-function senddata(){
-	alert("hiiiiiii");
-	$.ajax({
-	url : "/healthDirectory/updateprofile/", // the endpoint
-	type : "POST", // http method
-	data : {ser_name:$("#sername").val(),
-	ser_spl:$("#serspl").val(),
-	ser_phNum:$("#phnum").val(),
-	ser_location:$("#serloc").val(),
-	ser_addr:$("#seraddr").val(),
-	ser_email:$("#seremail").val(),
-
-	}, // data sent with the post request
-	// handle a successful response
-	success : function() {
-	 // log the console.log("success"); // another sanity check
-	<!--alert("Regristration is Sucessfull"); -->
-	},
-	// handle a non-successful response
-	error : function(xhr,errmsg,err) {
-		alert("falilure");
-	$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-	" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
-	console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-	}
-	});
-};
-
-
-</script>
-
-<script>
 function EmailValue() {
-alert("hiii");
+//alert("hiii");
 {% for sers in ser %}
  var a = "{{sers.ser_email}}"
  {% endfor %}
  
-alert(typeof a);
+//alert(typeof a);
+document.getElementById("seremail").value=a+"";
    
 }
 </script>
@@ -97,18 +65,11 @@ alert(typeof a);
 	</div>
 <!-- /.container-fluid -->
 </nav>
-
-
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="col-md-4">
-
 				<form action="updateprofile/" method="post">{% csrf_token %}
-
-				
-			
-
 					<legend>Edit your profile</legend>
 					{% for sers in ser %}
 					<label for="name">Name</label>
@@ -117,8 +78,8 @@ alert(typeof a);
 					<input type="text" class="form-control" id="serspl" name="ser_spl" placeholder="{{ sers.ser_spl }}"><br>
 					<label for="location">Location</label>
 					<input type="text" class="form-control" id="serloc" name="ser_loc"placeholder="{{ sers.ser_location }}"><br>
-					<label for="email">Email</label>
-					<input type="text"  class="form-control" name="ser_email" id="seremail" placeholder=" {{ sers.ser_email }}" >
+					<label for="email"><!-- Email --></label>
+					<input type="hidden"  class="form-control" name="ser_email" id="seremail" placeholder=" {{ sers.ser_email }}" >
 					<label for="password">Password</label>
 					<input type="password" class="form-control" name="ser_psword" id="serpswrd" placeholder="Enter Password">
 					<label for="confirm_password">Confirm Password</label>
